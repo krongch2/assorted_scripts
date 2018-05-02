@@ -105,13 +105,17 @@ def round(deck, nplayers):
     hands = [Hand(chunk) for chunk in chunks[:nplayers]]
     topdeck_i = 2 * nplayers
     result = []
-    for hand in hands:
+    new_hands = []
+    for hand in hands[1:]:
         if hand.value <= cutoff_value:
             hand.draw(deck[topdeck_i])
             topdeck_i += 1
-        result.append(compare(hand, hands[0]))
-        # print(hand, compare(hand, hands[0]))
-    result[0] = -sum(result[1:])
+        new_hands.append(hand)
+        print(hand)
+    print(new_hands)
+    # result.append(compare(hand, hands[0]))
+    print(hands[0])
+    # result[0] = -sum(result[1:])
     return result
 
 def sim(nrounds, nplayers):
@@ -123,4 +127,4 @@ def sim(nrounds, nplayers):
     print(net)
     return net
 
-sim(10000, 10)
+sim(1, 10)
